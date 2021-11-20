@@ -35,15 +35,19 @@ internal class EntityTest(
         val students = studentRepository.findAll()
 
         students.forEach { i ->
-            println(i) // Student(id=1, name=山田太郎, seat=Seat(id=1, name=Kokuyo))
-            println(i?.seat) // Seat(id=1, name=Kokuyo)
+            println(i)
+            println(i?.seat)
+            // Student(name='tanaka', seat=Seat(name='okamoto', id=100), id=100)
+            // Seat(name='okamoto', id=100)
+            // Student(name='山田太郎', seat=Seat(name='Kokuyo', id=101), id=101)
+            // Seat(name='Kokuyo', id=101)
         }
     }
 
     @Test
     internal fun retrieve() {
         val student = studentRepository.findById(100).orElseThrow()
-        println(student) // Student(id=100, name=tanaka, seat=Seat(id=100, name=okamoto))
+        println(student) // Student(name='tanaka', seat=Seat(name='okamoto', id=100), id=100)
         assertThat(student?.seat?.name).isEqualTo("okamoto")
     }
 }
