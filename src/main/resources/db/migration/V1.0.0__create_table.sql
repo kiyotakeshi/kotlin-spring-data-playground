@@ -1,7 +1,8 @@
-drop table if exists course CASCADE;
-drop table if exists person CASCADE;
-drop table if exists seats CASCADE;
-drop table if exists students CASCADE;
+drop table if exists review;
+drop table if exists course;
+drop table if exists person;
+drop table if exists students;
+drop table if exists seats;
 
 create table course
 (
@@ -39,3 +40,16 @@ create table students
 alter table students
     add constraint foreign key (seat_id)
         references seats (id);
+
+create table review
+(
+    id          bigint not null auto_increment,
+    description varchar(255),
+    rating      varchar(255),
+    course_id   bigint,
+    primary key (id)
+);
+
+alter table review
+    add constraint foreign key (course_id)
+        references course (id);

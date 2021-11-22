@@ -22,3 +22,4 @@ spring:
 #      data-locations: classpath:notUsed/data-h2.sql
   flyway:
     enabled: false
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder: trace

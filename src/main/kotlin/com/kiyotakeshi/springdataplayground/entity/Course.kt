@@ -1,5 +1,6 @@
 package com.kiyotakeshi.springdataplayground.entity
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -10,10 +11,14 @@ data class Course(
     val createdDate: LocalDateTime
 ) {
     @Id
-    @GeneratedValue
-    val id: Long = 0L
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id = 0L
+
+    @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)
+    @JsonManagedReference
+    var reviews: MutableList<Review> = mutableListOf();
 
     override fun toString(): String {
-        return "Course(name='$name', lastUpdateDate=$lastUpdateDate, createdDate=$createdDate, id=$id)"
+        return "Course(name='$name', lastUpdateDate=$lastUpdateDate, createdDate=$createdDate, id=$id, reviews=$reviews)"
     }
 }

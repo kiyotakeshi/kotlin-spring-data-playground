@@ -12,3 +12,12 @@ values (100, 'kotlin-beginner', '2021-11-20T20:20', '2021-11-21T01:18:14.063271'
 
 insert into course (id, name, created_date, last_update_date)
 values (101, 'kotlin-export', sysdate(), sysdate());
+
+insert into review (id, description, rating, course_id)
+values (100, 'excellent', '5', 100);
+
+insert into review (id, description, rating, course_id)
+values (101, 'good', '4', 100);
+
+insert into review (id, description, rating, course_id)
+values (102, 'excellent', '5', 101);

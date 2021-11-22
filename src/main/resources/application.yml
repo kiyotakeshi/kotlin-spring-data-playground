@@ -12,6 +12,15 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
     show-sql: true
+  # @see https://stackoverflow.com/a/70037507
+  # Spring Boot 2.6 と Springfox の食い合わせが原因
+  # @see https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#pathpattern-based-path-matching-strategy-for-spring-mvc
+  # > The default strategy for matching request paths against registered Spring MVC handler mappings has changed from AntPathMatcher to PathPatternParser
+  # Springfox がメンテナンスされていないことにも Andy Wilkinson さんが言及してる
+  # @see https://github.com/spring-projects/spring-boot/issues/28769#issuecomment-975341582
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 # パラメータの値をログに表示 ex.) binding parameter [1] as [INTEGER] - [1]
 # logging.level.org.hibernate.type: trace にして出力されるログからパッケージを特定
