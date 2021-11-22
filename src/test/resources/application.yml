@@ -3,10 +3,8 @@ spring:
     # @see https://stackoverflow.com/a/68086707
     # insert into seats (id, name) values (100, 'okamoto'); nested exception is org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "SEATS" not found; SQL statement:
     # @see https://spring.pleiades.io/spring-boot/docs/current/reference/html/howto.html#howto.data-initialization.using-basic-sql-scripts
-    # > EntityManagerFactory Bean が作成および初期化されるまで、データソースの初期化が延期されます。次に、schema.sql を使用して、Hibernate によって実行されるスキーマ作成に追加を行うことができ、data.sql を使用してそれを設定できます。
+    # > EntityManagerFactory Bean が作成および初期化されるまで、データソースの初期化が延期されます。次に、schema.sql を使用して、Hibernate によって実行されるスキーマ作成に追加を行うことができ、data-h2.sql を使用してそれを設定できます。
     defer-datasource-initialization: true
-
-    show-sql: true
     hibernate:
       # ddl-auto を有効にしている場合は schema.sql は使わない
       # @see https://docs.spring.io/spring-boot/docs/2.1.x/reference/html/howto-database-initialization.html#howto-initialize-a-database-using-spring-jdbc
@@ -14,17 +12,13 @@ spring:
       ddl-auto: create-drop
 
   datasource:
-    url: jdbc:h2:mem:playground;DATABASE_TO_UPPER=false;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:playground
 
   sql:
     init:
       mode: always
-      # platform を設定したら対応する schema, data のファイルを置く必要あり
-#      platform: h2
+      platform: h2
 #      schema-locations: classpath:schema-h2.sql
 #      data-locations: classpath:notUsed/data-h2.sql
-
-# パラメータの値をログに表示 ex.) binding parameter [1] as [INTEGER] - [1]
-logging.level.org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-
-
+  flyway:
+    enabled: false

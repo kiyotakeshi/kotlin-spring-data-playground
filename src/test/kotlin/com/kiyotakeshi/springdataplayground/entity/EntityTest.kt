@@ -28,7 +28,7 @@ internal class EntityTest(
         em.persistAndFlush(seat)
         System.out.println("seat id is " + seat.id) // 1
 
-        val student = Student("山田太郎", seat)
+        val student = SimpleStudent("山田太郎", seat)
         em.persistAndFlush(student)
 
         // Hibernate: select student0_.id as id1_1_, student0_.name as name2_1_, student0_.seat_id as seat_id3_1_ from student student0_

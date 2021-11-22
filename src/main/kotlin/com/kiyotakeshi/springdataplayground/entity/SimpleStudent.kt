@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "students")
-data class Student(
+data class SimpleStudent(
     var name: String,
     @OneToOne @JoinColumn(name = "seat_id")
     var seat: Seat? = null
