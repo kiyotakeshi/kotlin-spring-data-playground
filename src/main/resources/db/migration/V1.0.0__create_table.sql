@@ -6,7 +6,7 @@ drop table if exists seats;
 
 create table course
 (
-    id               bigint not null,
+    id               bigint not null auto_increment,
     created_date     timestamp,
     last_update_date timestamp,
     name             varchar(255),
