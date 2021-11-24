@@ -31,7 +31,6 @@ internal class CourseTest(
     @Test
     internal fun retrieve() {
         val course = courseRepository.findById(100L).orElseThrow()
-        println(course)
         assertThat(course.name).isEqualTo("kotlin-beginner")
     }
 }

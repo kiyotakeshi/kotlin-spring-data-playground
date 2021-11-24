@@ -21,7 +21,7 @@ internal class ReviewTest(
         )
         em.persistAndFlush(course)
 
-        val review = Review("5", "excellent", course)
+        val review = Review("5", "excellent","this is very useful course for kotlin beginner", course)
         em.persistAndFlush(review)
     }
 }

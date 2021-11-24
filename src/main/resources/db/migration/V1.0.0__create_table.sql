@@ -44,7 +44,8 @@ alter table students
 create table review
 (
     id          bigint not null auto_increment,
-    description varchar(255),
+    title       varchar(255),
+    description varchar(5000),
     rating      varchar(255),
     course_id   bigint,
     primary key (id)

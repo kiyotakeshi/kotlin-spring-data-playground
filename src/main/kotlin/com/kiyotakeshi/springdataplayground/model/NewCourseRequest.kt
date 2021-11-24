@@ -1,4 +1,4 @@
-package com.kiyotakeshi.springdataplayground.controller
+package com.kiyotakeshi.springdataplayground.model
 
 import java.time.LocalDateTime
 
